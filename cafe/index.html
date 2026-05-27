@@ -1,147 +1,164 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cafe Aroma</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <script defer src="scripts/app.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>AyudaYa - Conectando talento local</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
+<body>
 
-    <nav class="topheader">
-        <a href="#" class="logo">
-            <img height="50" width="50" src="images/cup-of-coffee.svg" alt="Logo Cafe Aroma">
-        </a>
+<header class="header">
+    <div class="header-container">
+        <div class="logo">
+            🧰 Ayuda<span>Ya</span>
+        </div>
+        <nav class="nav-links">
+            <a href="#" id="nav-inicio">Inicio</a>
+            <a href="#" id="nav-buscar">Buscar</a>
+            <a href="#" id="nav-perfil">Mi Perfil</a>
+            <a href="#" id="nav-historial">Historial</a>
+        </nav>
+        <div>
+            <button class="btn-outline" id="btn-registro">Registrarse</button>
+            <button class="btn-yellow" id="btn-login">Ingresar</button>
+        </div>
+    </div>
+</header>
 
-        <ul class="Menu-Horizontal">
-            <li><a href="#">Menú</a></li>
-            <li>
-                <a href="#">Productos</a>
-                <ul class="Menu-Vertical">
-                    <li><a href="#">Cafes</a></li>
-                    <li><a href="#">Tés</a></li>
-                    <li><a href="#">Postres</a></li>
-                    <li><a href="#">Snacks</a></li>
-                </ul>
-            </li>
-            <li><a href="#">Reservas</a></li>
-            <li><a href="#contactanos">Contáctanos</a></li>
+<main class="container">
+    <!-- Sección destacada: Necesito ayuda ahora -->
+    <section class="help-now">
+        <h2>⚠️ ¿Necesitas ayuda urgente?</h2>
+        <p>Encuentra un trabajador cerca de ti en menos de 5 minutos</p>
+        <button class="emergency-btn" id="helpNowBtn">📢 NECESITO AYUDA AHORA</button>
+        <p class="geo-status" id="geoStatus">📍 Activando geolocalización...</p>
+    </section>
+
+    <!-- Sección de anuncios / Feed social (inicio) -->
+    <section class="anuncios" id="seccion-anuncios">
+        <h2>📢 Novedades y Servicios Destacados</h2>
+        <div class="feed-anuncios" id="feedAnuncios">
+            <!-- Dinámico con JS pero con ejemplos estáticos -->
+            <div class="anuncio-item">
+                <strong>🔧 Juan Pérez (Electricista)</strong> <span class="badge">⭐ 4.9</span>
+                <p>"Completé 3 instalaciones eléctricas esta semana. ¡Contáctame!"</p>
+                <small>Hace 2 horas - Zona Centro</small>
+            </div>
+            <div class="anuncio-item">
+                <strong>🧹 María López (Limpieza)</strong> <span class="badge">⭐ 5.0</span>
+                <p>"Ofrezco limpieza profunda de casas. Precios desde $15.000"</p>
+                <small>Hace 1 día - 5 reseñas positivas</small>
+            </div>
+            <div class="anuncio-item">
+                <strong>📱 Cliente: Carlos M.</strong>
+                <p>"Necesito reparación de celular urgente, Zona Norte. ¿Alguien disponible?"</p>
+                <small>Publicado hace 30 min</small>
+            </div>
+        </div>
+    </section>
+
+    <!-- Búsqueda por categoría y ubicación -->
+    <section class="search-section">
+        <h2>🔍 Buscar trabajadores cerca de ti</h2>
+        <div class="search-filters">
+            <select id="categoria">
+                <option value="">Todas las categorías</option>
+                <option value="electricista">Electricista</option>
+                <option value="plomero">Plomero</option>
+                <option value="limpieza">Limpieza</option>
+                <option value="reparaciones">Reparaciones técnicas</option>
+                <option value="jardineria">Jardinería</option>
+            </select>
+            <input type="text" id="ubicacion" placeholder="Tu ubicación (ciudad o barrio)" value="Santiago">
+            <button class="btn-yellow" id="btnBuscar">Buscar ahora</button>
+        </div>
+    </section>
+
+    <!-- Resultados de trabajadores (Grid) -->
+    <div class="grid-2cols" id="resultadosTrabajadores">
+        <div class="card worker-card">
+            <h3>Alejandro Rojas</h3>
+            <p>⚡ Electricista | ⭐ 4.8 (12 reseñas)</p>
+            <p>📍 A 800m de ti - Disponible ahora</p>
+            <div class="card-actions">
+                <button class="btn-blue small-btn ver-perfil">Ver perfil</button>
+                <button class="btn-yellow small-btn contratar">Solicitar</button>
+            </div>
+        </div>
+        <div class="card worker-card">
+            <h3>Laura Méndez</h3>
+            <p>🔧 Reparación de electrodomésticos | ⭐ 4.9 (24 reseñas)</p>
+            <p>📍 A 1.2km - Disponible en 30 min</p>
+            <div class="card-actions">
+                <button class="btn-blue small-btn ver-perfil">Ver perfil</button>
+                <button class="btn-yellow small-btn contratar">Solicitar</button>
+            </div>
+        </div>
+        <div class="card worker-card">
+            <h3>Carlos Huerta</h3>
+            <p>🧰 Plomero | ⭐ 4.7 (9 reseñas)</p>
+            <p>📍 A 500m - Disponible ahora</p>
+            <div class="card-actions">
+                <button class="btn-blue small-btn ver-perfil">Ver perfil</button>
+                <button class="btn-yellow small-btn contratar">Solicitar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sistema de reseñas y puntuación DEMO -->
+    <section class="reviews-section">
+        <h2>✍️ Reseñas verificadas (últimos servicios)</h2>
+        <div class="review-card">
+            <strong>Servicio de electricidad</strong> - Calificación: ⭐⭐⭐⭐⭐ (5/5)
+            <p>"Muy profesional, llegó a tiempo. Lo recomiendo." - Cliente verificado</p>
+        </div>
+        <div class="review-card">
+            <strong>Limpieza de hogar</strong> - Calificación: ⭐⭐⭐⭐☆ (4.5/5)
+            <p>"Excelente trato, detallista."</p>
+        </div>
+    </section>
+
+    <!-- Chat integrado + Calendario (demostración) -->
+    <div class="grid-2cols">
+        <div class="card">
+            <h3>💬 Chat reciente</h3>
+            <div class="chat-preview" id="chatBox">
+                <div class="mensaje"><strong>Trabajador:</strong> Hola, puedo ir mañana a las 10am.</div>
+                <div class="mensaje"><strong>Tú:</strong> Perfecto, confirmo la cita.</div>
+            </div>
+            <div class="form-group">
+                <input type="text" placeholder="Escribe un mensaje..." id="msgInput">
+                <button class="btn-yellow small-btn" id="enviarMsg">Enviar</button>
+            </div>
+        </div>
+        <div class="card">
+            <h3>📅 Agendar cita al calendario</h3>
+            <div class="calendario-demo">
+                <p>📆 Fecha: <input type="date" id="fechaCita"></p>
+                <p>⏰ Hora: <input type="time" id="horaCita"></p>
+                <button class="btn-blue" id="agendarCitaBtn">Agendar recordatorio</button>
+                <p id="mensajeCalendario" class="badge" style="margin-top: 10px;"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Historial de servicios -->
+    <section class="historial">
+        <h2>📋 Mi historial de servicios</h2>
+        <ul id="listaHistorial">
+            <li>✅ 12/03/2025 - Electricista (Alejandro) - Calificado ⭐⭐⭐⭐⭐</li>
+            <li>✅ 05/03/2025 - Limpieza (María) - Calificado ⭐⭐⭐⭐☆</li>
         </ul>
-    </nav>
-
-    <section class="seccion-creditos">
-        <div class="cont-gral-creditos">
-            <div class="cont-cred-texto">
-                <h2>Sección Menú</h2>
-                <p>
-                    En <strong>Cafe Aroma</strong> ofrecemos una experiencia única en cada taza.
-                    Nuestro menú combina granos seleccionados de distintas regiones,
-                    logrando aromas que harán vibrar tu corazón.
-                </p>
-                <p>
-                    Desde el clásico café hasta el latte vainilla o té chai, cada bebida es preparada por baristas apasionados
-                    que buscan brindarte un momento de pausa.
-                </p>
-            </div>
-            <div class="cont-cred-img">
-                <img src="images/cafe1.jpeg" alt="Tazas de café aroma" width="400" height="300">
-            </div>
-        </div>
+        <button class="btn-outline" id="verMasHistorial">Ver más</button>
     </section>
+</main>
 
-    <section class="seccion-productos">
-        <div class="cont-gral-productos">
-            <div class="cont-seg-texto">
-                <h2>Sección Productos</h2>
-                <p>
-                    Disfruta de nuestra amplia variedad de cafés, tés, postres artesanales...
-                </p>
-                <p>
-                    También puedes acompañar tu bebida con deliciosos croissants, brownies y tartas. Si deseas conocer más sobre nuestro pan tostado, contáctanos.
-                </p>
-                <button>Leer más...</button>
+<footer class="footer">
+    <p>&copy; 2025 AyudaYa - Conectamos talento local de confianza</p>
+    <p>🔐 Verificación de identidad | 📍 Geolocalización en tiempo real | 🛡️ Sistema de reputación</p>
+</footer>
 
-                <div class="cont-seg-video">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/qdpXxGPqW-Y?si=B1qhWtfiKnwiGQIQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="seccion-formulario" id="contactanos">
-        <div class="cont-gral-formulario">
-            <h2>Formulario de Reservas</h2>
-            <p>Complete todos los datos para reservar su mesa o solicitar mayor información</p>
-            <form class="formulario" id="contactForm">
-                <!-- Campo: Nombre -->
-                <div class="campo">
-                    <label for="nombre">Nombres completos:</label>
-                    <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre">
-                </div>
-                <br>
-
-                <div class="campo">
-                    <label for="email">Correo electrónico:</label>
-                    <input type="email" id="email" name="email" placeholder="Ingrese su correo electrónico">
-                </div>
-                <br>
-
-                <div class="campo">
-                    <label for="pais">País:</label>
-                    <select id="pais" name="pais">
-                        <option value="">Seleccione un país</option>
-                        <option value="Perú">Perú</option>
-                        <option value="México">México</option>
-                        <option value="Argentina">Argentina</option>
-                        <option value="Chile">Chile</option>
-                        <option value="Colombia">Colombia</option>
-                        <option value="Brasil">Brasil</option>
-                    </select>
-                </div>
-                <br>
-
-                <div class="campo">
-                    <label>Preferencias:</label>
-                    <ul class="lista-checkbox" style="list-style: none; padding-left: 0;">
-                        <li><label><input type="checkbox" name="intereses" value="Café"> Café</label></li>
-                        <li><label><input type="checkbox" name="intereses" value="Manzanilla"> Manzanilla</label></li>
-                        <li><label><input type="checkbox" name="intereses" value="Té"> Té</label></li>
-                        <li><label><input type="checkbox" name="intereses" value="Maracuyá"> Maracuyá</label></li>
-                    </ul>
-                </div>
-                <br>
-
-                <div class="campo">
-                    <label>Tipo de reserva:</label>
-                    <ul class="lista-radio" style="list-style: none; padding-left: 0;">
-                        <li><label><input type="radio" name="reserva" value="individual"> Individual</label></li>
-                        <li><label><input type="radio" name="reserva" value="grupal"> Grupal</label></li>
-                    </ul>
-                </div>
-                <br>
-
-                <button type="submit">Enviar reserva</button>
-            </form>
-        </div>
-    </section>
-
-    <footer class="seccion-footer">
-        <div class="cont-gral-footer">
-            <div>
-                <h3>En nuestro café</h3>
-                <p>Te esperamos con los mejores aromas y sabores.</p>
-            </div>
-            <div class="footer-redes">
-                <h3>Nuestras redes</h3>
-                <ul class="lista-redes" style="list-style: none; padding-left: 0;">
-                    <li><a href="#">Facebook</a></li>
-                    <li><a href="#">Instagram</a></li>
-                </ul>
-            </div>
-        </div>
-        <hr>
-        <p style="text-align: center;">&copy; 2025 Cafe Aroma - Todos los derechos reservados</p>
-    </footer>
-
+<script src="app.js"></script>
 </body>
 </html>
